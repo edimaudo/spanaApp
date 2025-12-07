@@ -17,8 +17,7 @@ app.config['SECRET_KEY'] = os.getenv('FLASK_SECRET_KEY', 'dev-secret-key-change-
 # Configure Gemini API
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 if GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
-    model = genai.GenerativeModel('gemini-pro')
+    client = genai.Client(api_key=GEMINI_API_KEY)
 else:
     model = None
     print("Warning: GEMINI_API_KEY not found. API calls will fail.")
