@@ -17,7 +17,9 @@ app = Flask(__name__)
 GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
 if GEMINI_API_KEY:
     client = genai.Client(api_key=GEMINI_API_KEY)
+    MODEL = 'gemini-2.5-flash'
 else:
+    model = None
     print("Warning: GEMINI_API_KEY not found. API calls will fail.")
 
 # Brainstorming technique descriptions for context
@@ -98,7 +100,7 @@ def generate():
         # Generate response from Gemini
         #response = model.generate_content(prompt)
         response = client.models.generate_content(
-                    model='gemini-2.5-flash',
+                    model=MODEL,#'gemini-2.5-flash',
                     contents=prompt,
                     config=types.GenerateContentConfig(
                         #system_instruction=system_instruction,
