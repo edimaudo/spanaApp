@@ -73,7 +73,7 @@ def generate():
     """Generate brainstorming output using Gemini AI"""
     try:
         # Check if API is configured
-        if not model:
+        if not MODEL:
             return jsonify({
                 'success': False,
                 'error': 'Gemini API is not configured. Please set GEMINI_API_KEY environment variable.'
@@ -106,6 +106,8 @@ def generate():
                         #system_instruction=system_instruction,
                         # *** THE FIX: Force the model to generate valid JSON ***
                         #response_mime_type="application/json", 
+                        temperature=0.7,
+                        max_output_tokens=2048,
                     )
         )
         
