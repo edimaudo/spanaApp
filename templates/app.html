@@ -1,1 +1,146 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spana - Brainstorming Application</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <h1><a href="{{ url_for('index') }}">Spana</a></h1>
+            </div>
+            <nav class="app-nav">
+                <a href="{{ url_for('index') }}" class="nav-link">Home</a>
+            </nav>
+        </header>
+
+        <main class="app-main">
+            <div class="form-section">
+                <h2 class="section-title">Configure Your Brainstorming Session</h2>
+
+                <form id="brainstormForm" class="brainstorm-form">
+                    <div class="form-group">
+                        <label for="technique" class="form-label">
+                            Brainstorming Technique <span class="required">*</span>
+                        </label>
+                        <select id="technique" name="technique" class="form-control" required>
+                            <option value="">Select a technique</option>
+                            <option value="5 Whys">5 Whys</option>
+                            <option value="Starbursting">Starbursting</option>
+                            <option value="SWOT">SWOT</option>
+                            <option value="Porters 5 Forces">Porter's 5 Forces</option>
+                            <option value="Six Thinking Hats">Six Thinking Hats</option>
+                            <option value="SCAMPER">SCAMPER</option>
+                            <option value="Charrette">Charrette</option>
+                            <option value="Stepladder">Stepladder</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="business_area" class="form-label">Business Area</label>
+                        <select id="business_area" name="business_area" class="form-control">
+                            <option value="">Select a business area (optional)</option>
+                            <option value="Non Profit">Non Profit</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Government">Government</option>
+                            <option value="Sustainability">Sustainability</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Manufacturing">Manufacturing</option>
+                            <option value="Small Business">Small Business</option>
+                            <option value="Retail">Retail</option>
+                            <option value="Hospitality">Hospitality</option>
+                            <option value="Logistics">Logistics</option>
+                            <option value="Real Estate">Real Estate</option>
+                            <option value="Food & Beverage">Food & Beverage</option>
+                            <option value="Social Impact">Social Impact</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Fashion">Fashion</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="icon" class="form-label">Business/World Icon Perspective</label>
+                        <select id="icon" name="icon" class="form-control">
+                            <option value="">Select an icon (optional)</option>
+                            <option value="Jack Ma">Jack Ma</option>
+                            <option value="Steve Jobs">Steve Jobs</option>
+                            <option value="Peter Drucker">Peter Drucker</option>
+                            <option value="Mother Theresa">Mother Theresa</option>
+                            <option value="Nikola Tesla">Nikola Tesla</option>
+                            <option value="Sakichi Toyoda">Sakichi Toyoda</option>
+                            <option value="Estee Lauder">Estee Lauder</option>
+                            <option value="Thomas Edision">Thomas Edison</option>
+                            <option value="Henry Ford">Henry Ford</option>
+                            <option value="Andrew Carnegie">Andrew Carnegie</option>
+                            <option value="Sam Walton">Sam Walton</option>
+                            <option value="Charles Schwab">Charles Schwab</option>
+                            <option value="Bill Gates">Bill Gates</option>
+                            <option value="Warren Buffett">Warren Buffett</option>
+                            <option value="Indra Nooyi">Indra Nooyi</option>
+                            <option value="Grace Hopper">Grace Hopper</option>
+                            <option value="Martin Luther King">Martin Luther King</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="issue" class="form-label">
+                            Issue and Expectations <span class="required">*</span>
+                        </label>
+                        <textarea 
+                            id="issue" 
+                            name="issue" 
+                            class="form-control textarea-large" 
+                            rows="6"
+                            placeholder="Describe the challenge you're facing and what you hope to achieve from this brainstorming session..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assumptions" class="form-label">Assumptions</label>
+                        <textarea 
+                            id="assumptions" 
+                            name="assumptions" 
+                            class="form-control textarea-medium" 
+                            rows="4"
+                            placeholder="List any constraints, known facts, or assumptions that should be considered..."
+                        ></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="generateBtn" class="btn-primary">
+                            Generate Analysis
+                        </button>
+                        <button type="button" id="resetBtn" class="btn-secondary">
+                            Reset Form
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="output-section" id="outputSection">
+                <div class="output-header">
+                    <h2 class="section-title">Analysis Output</h2>
+                    <button id="copyBtn" class="btn-copy" style="display: none;">Copy to Clipboard</button>
+                </div>
+                <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Generating your brainstorming analysis...</p>
+                </div>
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+                <div id="outputContent" class="output-content"></div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2024 Spana. Powered by Gemini AI.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
