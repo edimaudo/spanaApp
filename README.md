@@ -64,13 +64,11 @@ spana/
    Create a `.env` file in the root directory:
    ```
    GEMINI_API_KEY=your_gemini_api_key_here
-   FLASK_SECRET_KEY=your_secret_key_here
    ```
 
    Or set environment variables directly:
    ```bash
    export GEMINI_API_KEY="your_gemini_api_key_here"
-   export FLASK_SECRET_KEY="your_secret_key_here"
    ```
 
 ## Running the Application
@@ -97,7 +95,6 @@ The application will be available at `http://localhost:5000`
 
 3. Set environment variables in Vercel dashboard:
    - `GEMINI_API_KEY`
-   - `FLASK_SECRET_KEY`
 
 ## Usage Guide
 
@@ -185,8 +182,3 @@ Spana uses Google's Gemini API to generate responses. The application constructs
 - Analytics and insights
 - Add more brainstorming techniques
 - Potentially build it into a full-scale productivity app
-
-## Acknowledgments
-
-- Google Gemini AI for powering the brainstorming engine
-- Flask community for the excellent web framework
